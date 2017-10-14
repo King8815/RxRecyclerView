@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+        /*toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.action_setting){
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity{
                 }
                 return true;
             }
-        });
+        });*/
     }
 
     private void initRecyclerView() {
@@ -124,10 +124,23 @@ public class MainActivity extends AppCompatActivity{
             }
         });
     }
+
+    //判断显示menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);//加载menu文件到布局
         return true;
+    }
+    //menu item点击事件
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId())
+        {
+            case R.id.action_setting:
+                Toast.makeText(MainActivity.this,"测试menu", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void startActivity(Class<?> cls){
