@@ -28,7 +28,8 @@
         <activity android:name=".activity.StaggerLayoutActivity" />
         <activity android:name=".activity.RefreshActivity" />
         <activity android:name=".activity.SwipeRecyclerActivity" />
-        <activity android:name=".activity.BannerActivity"></activity>
+        <activity android:name=".activity.BannerActivity"/>
+        <activity android:name=".BaseActivity"/>
     </application>
 
 </manifest>

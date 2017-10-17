@@ -25,12 +25,13 @@ import com.example.rxrecyclerview.activity.RefreshActivity;
 import com.example.rxrecyclerview.activity.StaggerLayoutActivity;
 import com.example.rxrecyclerview.activity.SwipeRecyclerActivity;
 import com.example.rxrecyclerview.adapter.MainRecyclerViewAdapter;
+import com.example.rxrecyclerview_library.ItemDecoration.LinearItemDecoration;
 import com.example.rxrecyclerview_library.interfaces.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends BaseActivity{
     private static final String TAG = "MainActivity";
 
     private Toolbar toolbar;
@@ -64,14 +65,23 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        initToolBar();
+//        setContentView(R.layout.activity_main);
+        setContentLayout(R.layout.activity_main);
+//        initToolBar();
+//        setToolbar();
+        setTitle("RxRecyclerView");
+        /*setNavigation(getResources().getDrawable(R.mipmap.fanhui));
+        setNavigationListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });*/
         initRecyclerView();
         addClickListener();
     }
 
-    private void initToolBar() {
+    /*private void initToolBar() {
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.mipmap.fanhui);
         toolbar.setTitle("");
@@ -84,7 +94,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        /*toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+        *//*toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.action_setting){
@@ -92,8 +102,8 @@ public class MainActivity extends AppCompatActivity{
                 }
                 return true;
             }
-        });*/
-    }
+        });*//*
+    }*/
 
     private void initRecyclerView() {
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
@@ -107,7 +117,8 @@ public class MainActivity extends AppCompatActivity{
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,manager.getOrientation()));
+//        recyclerView.addItemDecoration(new DividerItemDecoration(this,manager.getOrientation()));
+        recyclerView.addItemDecoration(new LinearItemDecoration(this,manager.getOrientation()));
     }
 
     private void addClickListener(){
@@ -125,7 +136,7 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-    //判断显示menu
+    /*//判断显示menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);//加载menu文件到布局
@@ -142,7 +153,7 @@ public class MainActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
-
+*/
     private void startActivity(Class<?> cls){
         Intent intent= new Intent(this,cls);
         startActivity(intent);
